@@ -1,0 +1,134 @@
+
+.cart-css-box{
+    background-color: rgb(138, 136, 136);
+    width: 800px;
+    position: absolute;
+    margin-top: 90px;
+    
+}
+
+.big-box
+{
+    display: block;
+    width: 700px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color:rgb(247, 245, 245);
+    border-radius: 10px; 
+    margin: 5px;  
+    padding: 10px; 
+}
+.image-css{
+    width: 150px;
+}
+
+.info-outer-box{
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: 25% 1fr; 
+}
+.detail-box
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 27%;
+}
+.detail
+{
+    display: flex;
+    margin: 3px;
+}
+.button-css{
+    background-color: red;
+    border-radius: 10px;
+    width: 70px;
+    padding: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+.button-container{
+    display: inline;
+}
+.h3{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    cursor: pointer;  
+}
+.outer-box{
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    
+}
+.radio-container-css{
+    
+    display: block;
+    border: 3px solid black;
+    
+}
+.h4-css{
+    text-align: center;
+}
+.radio-value{
+    display:block;
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.date-css{
+    display:inline-block;
+    color: red;
+}
+.price-css{
+    display:inline-block;
+    margin-left: 30px;
+    color: blue;
+}
+.header{
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    background-color: black;
+    z-index: 1;
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
+}
+.right-section{
+    background-color: lightblue;
+    display: flex;
+    width: 300px;
+    height: 70px;
+}
+.middle-section{
+    background-color: lightpink;
+    display: flex;
+    width: 300px;
+    font-weight: bold;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+        
+}
+.left-section{
+    display: flex;
+    width: 300px;
+    font-weight: bold;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+        
+}
+img{
+    width: 210px;
+}
+.order-detail{
+    position: absolute;
+    top:80px;
+    right: 10px;
+    width: 700px;
+    height:700px ;
+    background-color: aqua;
+}
