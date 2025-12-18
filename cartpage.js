@@ -13,7 +13,11 @@ import { deliveryOptionCart } from "./Data/deliveryOptions.js";
 //console.log(deliveryDate);
 //console.log(deliveryDate.format('dddd,MMMM D'));
 
+/* inorder to render the cart page and avoiding delivery option issue 
+we can put all the code into a function called renderOrderSummary() and make it run  */
 
+function renderOrderSummary(){
+    
 let list='';
 originalCart.forEach((cartItem)=>{
   
@@ -188,11 +192,14 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
         const bookId = element.dataset.bookId;
         const deliveryOptionId=element.dataset.deliveryOptionId;
         UpdateDeliveryOption(bookId,deliveryOptionId);
+
+        renderOrderSummary(); // A function can run or call inside itself is calles "recursion"
     });   
-
-
 });
 
+};
+
+renderOrderSummary();
 
 
 
