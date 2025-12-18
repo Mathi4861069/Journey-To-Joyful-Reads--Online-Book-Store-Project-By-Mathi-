@@ -82,5 +82,24 @@ export function removeFromCart(deleteId)
     saveToStorage();
 }
 
+export function UpdateDeliveryOption(bookId , deliveryOptionId){
+
+ let matchbook;
+    
+ originalCart.forEach((CartItem)=>{
+
+        if(bookId === CartItem.bookId)
+        {
+            matchbook=CartItem;
+        }
+
+    });
+
+    matchbook.deliveryOptionId = deliveryOptionId;
+
+    saveToStorage();
+
+}
+
 
 

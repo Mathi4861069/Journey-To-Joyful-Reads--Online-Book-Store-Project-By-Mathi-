@@ -1,5 +1,5 @@
 
-import { originalCart ,removeFromCart} from "./Data/BookCart.js";
+import { originalCart ,removeFromCart, UpdateDeliveryOption} from "./Data/BookCart.js";
 import { books_information } from "./Data/BooksInfo.js";
 import { changeformat } from "./Data/changeformat.js";
 import  dayjs  from "https://unpkg.com/dayjs@1.11.10/esm/index.js" 
@@ -34,10 +34,37 @@ originalCart.forEach((cartItem)=>{
 
  console.log(matchSearchbook);
 
+//get the delivery option Id from cartItems and using this we gonna get full delivery date options//
 
-let html =`
+let deliveryOptionId = cartItem.deliveryOptionId;
+
+console.log(deliveryOptionId);
+
+let deliveryOption;
+
+deliveryOptionCart.forEach((option)=>{
+
+    console.log(option.id);
+
+    if(option.id === deliveryOptionId)
+    {
+        deliveryOption = option;
+    }
+
+});
+
+    const today=dayjs();
+        
+    let deliveryDate = today.add(deliveryOption.deliveryTime,'days');
+
+    let deliveryString = deliveryDate.format('dddd, MMMM D');
+    console.log(deliveryString);
+
+
+
+let CartItemshtml =`
 <div class="big-box js-big-container-${matchSearchbook.id}">
-<div class="h3">Delivery Date:</div>
+<div class="h3">Delivery Date:${deliveryString}</div>
 <div class="outer-box">
 
 <div class="info-outer-box">
@@ -66,7 +93,7 @@ ${deliveryDetailsHTML(matchSearchbook,cartItem)}
  </div>
  </div> `;
 
-    list=list+html;
+    list=list+CartItemshtml;
 
 });
 
@@ -127,14 +154,17 @@ but we can store the output value in a variable)
     let isChecked = deliveryOption.id === cartItem.deliveryOptionId ; 
 
     console.log(cartItem.deliveryOptionId);
-    console.log(cartItem);
+    console.log(cartItem); 
 
     
 
     //generate html from saving data...
 
 let html_del=`
-    <div class="radio-value">  <input type="radio" ${isChecked ? 'checked':''} name=${matchSearchbook.id} >
+    <div class="radio-value js-delivery-option" 
+    data-book-id="${matchSearchbook.id}" 
+    data-delivery-option-id="${deliveryOption.id}">  
+    <input type="radio" ${isChecked ? 'checked':''} name=${matchSearchbook.id} >
         <div class="date-css"> ${deliveryString} </div>
         <div class="price-css"> ${Price} - For Shipping </div>
     </div>
@@ -150,6 +180,18 @@ let html_del=`
     return deliveryHTML;
 
 }
+
+document.querySelectorAll('.js-delivery-option').forEach((element)=>{
+
+    element.addEventListener('click',()=>{
+
+        const bookId = element.dataset.bookId;
+        const deliveryOptionId=element.dataset.deliveryOptionId;
+        UpdateDeliveryOption(bookId,deliveryOptionId);
+    });   
+
+
+});
 
 
 
