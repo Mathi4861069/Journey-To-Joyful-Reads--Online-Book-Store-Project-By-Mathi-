@@ -1,4 +1,22 @@
 
+export function getBookInfo(bookId)
+{
+     let matchSearchbook; 
+
+    books_information.forEach((book)=>{
+        console.log(book.id);
+
+        if(book.id===bookId)
+        {
+            matchSearchbook=book;
+        }
+    });
+
+    return matchSearchbook;
+
+}
+
+//instead of writing code for book info we can use the above funtion to get book info using bookId
 
 export const books_information=[
     {name:'I Came Upon A LightHouse',author:'Shantanu Naidu',image:'/images/lighthouse.png',id:'1001',price:500,star:'/images/star5.png'},

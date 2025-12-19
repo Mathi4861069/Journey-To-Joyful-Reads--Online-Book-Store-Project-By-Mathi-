@@ -1,6 +1,6 @@
 
 import { originalCart ,removeFromCart, UpdateDeliveryOption} from "../Data/BookCart.js";
-import { books_information } from "../Data/BooksInfo.js";
+import { books_information,getBookInfo } from "../Data/BooksInfo.js";
 import { changeformat } from "./changeformat.js";
 import  dayjs  from "https://unpkg.com/dayjs@1.11.10/esm/index.js" 
 //we use ESM version of dayjs function 
@@ -22,11 +22,10 @@ let list='';
 originalCart.forEach((cartItem)=>{
   
     const bookId=cartItem.bookId;
-    console.log(bookId);
+    
+    let matchSearchbook = getBookInfo(bookId); 
 
-    let matchSearchbook; 
-
-    books_information.forEach((book)=>{
+    /* books_information.forEach((book)=>{
         console.log(book.id);
 
         if(book.id===bookId)
@@ -34,9 +33,7 @@ originalCart.forEach((cartItem)=>{
             matchSearchbook=book;
 
         }
-    });
-
- console.log(matchSearchbook);
+    });*/ // instead of using the commanted codes we can call the function getBookInfo() //
 
 //get the delivery option Id from cartItems and using this we gonna get full delivery date options//
 
