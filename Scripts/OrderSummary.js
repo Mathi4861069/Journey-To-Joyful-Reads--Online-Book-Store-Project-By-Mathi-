@@ -6,7 +6,7 @@ import  dayjs  from "https://unpkg.com/dayjs@1.11.10/esm/index.js"
 //we use ESM version of dayjs function 
 // ESM is nothing but an function from code is export from the file
 
-import { deliveryOptionCart } from "../Data/deliveryOptions.js";
+import { deliveryOptionCart, getDeliveryOption } from "../Data/deliveryOptions.js";
 
 //const today=dayjs();
 //const deliveryDate=today.add(7,'days');
@@ -23,7 +23,7 @@ originalCart.forEach((cartItem)=>{
   
     const bookId=cartItem.bookId;
     
-    let matchSearchbook = getBookInfo(bookId); 
+    const matchSearchbook = getBookInfo(bookId); 
 
     /* books_information.forEach((book)=>{
         console.log(book.id);
@@ -37,13 +37,11 @@ originalCart.forEach((cartItem)=>{
 
 //get the delivery option Id from cartItems and using this we gonna get full delivery date options//
 
-let deliveryOptionId = cartItem.deliveryOptionId;
+const deliveryOptionId = cartItem.deliveryOptionId;
 
-console.log(deliveryOptionId);
+let deliveryOption = getDeliveryOption(deliveryOptionId);
 
-let deliveryOption;
-
-deliveryOptionCart.forEach((option)=>{
+/* deliveryOptionCart.forEach((option)=>{
 
     console.log(option.id);
 
@@ -52,7 +50,7 @@ deliveryOptionCart.forEach((option)=>{
         deliveryOption = option;
     }
 
-});
+}); */ // instead of using these code to get delivery option we can call the getDeliveryOption() //
 
     const today=dayjs();
         
