@@ -2,11 +2,13 @@
 import { originalCart ,removeFromCart, UpdateDeliveryOption} from "../Data/BookCart.js";
 import { books_information,getBookInfo } from "../Data/BooksInfo.js";
 import { changeformat } from "./changeformat.js";
+import { checkCount } from "./checkoutCount.js";
 import  dayjs  from "https://unpkg.com/dayjs@1.11.10/esm/index.js" 
 //we use ESM version of dayjs function 
 // ESM is nothing but an function from code is export from the file
 
 import { deliveryOptionCart, getDeliveryOption } from "../Data/deliveryOptions.js";
+import { renderPaymentSummary } from "./PaymentSummary.js";
 
 //const today=dayjs();
 //const deliveryDate=today.add(7,'days');
@@ -63,7 +65,7 @@ let deliveryOption = getDeliveryOption(deliveryOptionId);
 
 let CartItemshtml =`
 <div class="big-box js-big-container-${matchSearchbook.id}">
-<div class="h3">Delivery Date:${deliveryString}</div>
+<div class="h1">Delivery Date:${deliveryString}</div>
 <div class="outer-box">
 
 <div class="info-outer-box">
@@ -74,7 +76,7 @@ let CartItemshtml =`
         <div class="detail">Book Id: ${matchSearchbook.id}</div>
         <div class="detail">Book Name: ${matchSearchbook.name}</div>
         <div class="detail">Quantity : ${cartItem.quantity}</div>
-        <div class="detail">Price : ${changeformat(matchSearchbook.price)}</div>
+        <div class="detail-price">Price : ${changeformat(matchSearchbook.price)}</div>
         <div class="button-container">
         <button class="button-css">Update</button>
         <button class="button-css js-delete" data-delete-id=${matchSearchbook.id}>Delete</button>
@@ -110,20 +112,15 @@ document.querySelectorAll('.js-delete').forEach((button)=>{
          const container=document.querySelector(`.js-big-container-${deleteId}`);
          console.log(container);
          container.remove();
+         renderPaymentSummary();
        
     });
 
 });
-// To count the cart items
 
-let count=0;
-originalCart.forEach((item)=>{
+//To CheckOut Item Count
 
-    count=count+1;
-});
-console.log(count);
-
-document.querySelector('.js-middle').innerHTML=`CheckOut ( ${count} ) Books!`;
+document.querySelector('.js-middle').innerHTML=`CheckOut ( ${checkCount()} ) Books!`;
 
 
 //for delivery Options....
@@ -189,6 +186,8 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
         UpdateDeliveryOption(bookId,deliveryOptionId);
 
         renderOrderSummary(); // A function can run or call inside itself is calles "recursion"
+        renderPaymentSummary();
+        checkCount();
     });   
 });
 

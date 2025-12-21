@@ -25,4 +25,6 @@ export const books_information=[
     {name:'Zen Simple Living',author:'Shunmyo Masuno',image:'/images/zen.png',id:'1004',price:490,star:'/images/star4.5.png'},
     {name:'Zero To One',author:'Peter Thiel co-written with Blake Masters',image:'/images/zero.png',id:'1005',price:400,star:'/images/star4.png'},
     {name:'Twisted Games',author:'Ana Huang',image:'/images/games.png',id:'1006',price:250,star:'/images/star4.5.png'},
-    {name:'Power Of Your Subconscious Mind',author:'Dr. Joseph Murphy',image:'/images/power.png',id:'1007',price:350,star:'/images/star4.5.png'}];
+    {name:'Power Of Your Subconscious Mind',author:'Dr. Joseph Murphy',image:'/images/power.png',id:'1007',price:350,star:'/images/star4.5.png'},
+    {name:'Ikigai',author:'Francesc Miralles and Hector Garcia',image:'/images/ikigai.png',id:'1008',price:110,star:'/images/star4.5.png'}
+];

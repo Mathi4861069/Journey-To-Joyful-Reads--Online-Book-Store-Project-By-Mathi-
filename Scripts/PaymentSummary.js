@@ -3,6 +3,8 @@ import { originalCart } from "../Data/BookCart.js";
 import { getBookInfo } from "../Data/BooksInfo.js";
 import { getDeliveryOption } from "../Data/deliveryOptions.js";
 import { changeformat } from "./changeformat.js";
+import { checkCount } from "./checkoutCount.js";
+
 
 export function renderPaymentSummary()
 {
@@ -43,32 +45,35 @@ export function renderPaymentSummary()
 
 
     const paymentHTML=`
+    <div class="payment-render-box">
         <table class="table">
 
                 <tr>
-                    <td> Cart Books Total Price Rs:</td>
-                    <td>${changeformat (totalCartPrice)}</td>
+                    <td> Total Price Of (${checkCount()}) Books:</td>
+                    <td>Rs:${changeformat (totalCartPrice)}</td>
                 </tr>
                 <tr>
-                    <td> Shipping Price Rs:</td>
-                    <td>${changeformat (shippingCost)}</td>
+                    <td> Shipping Price:</td>
+                    <td>Rs:${changeformat (shippingCost)}</td>
                 </tr>
                 <tr>
                     <td>Total Price Before Tax :</td>
-                    <td>${changeformat (TotalBeforeTax)}</td>
+                    <td>Rs:${changeformat (TotalBeforeTax)}</td>
                 </tr>
                 <tr>
                     <td>Extimated Tax (5%):</td>
-                    <td>${changeformat (taxCalculation)}</td>
+                    <td>Rs:${changeformat (taxCalculation)}</td>
                 </tr>
                 <tr class="total-css">
                     <td>Total Price With Tax:</td>
-                    <td>${changeformat(TotalAfterTax)}</td>
+                    <td>Rs:${changeformat(TotalAfterTax)}</td>
                 </tr>
             </table>   
+
+            <button class="order-button-css">Place Your Order</button>
+    </div>
     `;
 
     document.querySelector('.js-payment-detail').innerHTML = paymentHTML;
-    renderPaymentSummary();
  
 }
