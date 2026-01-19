@@ -70,10 +70,29 @@ export function renderPaymentSummary()
                 </tr>
             </table>   
 
-            <button class="order-button-css">Place Your Order</button>
+            <button class="order-button-css js-order-button">Place Your Order</button>
     </div>
     `;
 
     document.querySelector('.js-payment-detail').innerHTML = paymentHTML;
+
+    document.querySelector('.js-order-button').addEventListener('click',async ()=>{
+
+        console.log("button");
+       const response = await fetch('https://supersimplebackend.dev/orders',{
+            method:'POST',
+            headers:{
+                'Content-Type':'applications/json'
+            },
+            body:JSON.stringify({
+                originalCart:originalCart,
+                
+            })
+        });
+
+        const order = await response.json();
+
+        console.log(order);
+    })
  
 }
